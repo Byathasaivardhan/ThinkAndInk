@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debate - Think and Ink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0A1828;
+      color: #BFA181;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    .debate-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 400px;
+      margin-top: 20px;
+    }
+    .chat-box {
+      width: 80%;
+      max-width: 700px;
+      height: 250px;
+      border: 1px solid #BFA181;
+      border-radius: 10px;
+      padding: 15px;
+      overflow-y: scroll;
+      background-color: #1A2A39;
+      color: #BFA181;
+      margin-bottom: 20px;
+    }
+    .chat-message {
+      margin: 10px 0;
+    }
+    .chat-message.ai {
+      text-align: left;
+    }
+    .chat-message.user {
+      text-align: right;
+    }
+    textarea {
+      width: 80%;
+      height: 80px;
+      padding: 10px;
+      background-color: #BFA181;
+      color: #0A1828;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .button {
+      background-color: #29dad4;
+      color: #0A1828;
+      border: none;
+      font-size: 20px;
+      padding: 15px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .button:hover {
+      background-color: #BFA181;
+      color: #0A1828;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Debate</h1>
+
+    <!-- Debate Chat Box -->
+    <div class="debate-container">
+      <div id="chatBox" class="chat-box">
+        <div class="chat-message ai">
+          <strong>AI:</strong> I believe climate change is the most critical issue of our time. What are your thoughts on this?
+        </div>
+      </div>
+
+      <!-- User Input Area -->
+      <textarea id="userInput" placeholder="Prepare your argument here..."></textarea>
+      <br>
+
+      <button class="button" onclick="submitDebate()">Submit Argument</button>
+    </div>
+  </div>
+
+  <script>
+    function submitDebate() {
+      var userText = document.getElementById('userInput').value;
+      
+      if (userText.trim() === "") {
+        alert("Please enter your argument before submitting.");
+        return;
+      }
+
+      // Add user's input to the chat
+      var chatBox = document.getElementById('chatBox');
+      var userMessage = document.createElement('div');
+      userMessage.classList.add('chat-message', 'user');
+      userMessage.innerHTML = '<strong>You:</strong> ' + userText;
+      chatBox.appendChild(userMessage);
+
+      // Clear the user input field
+      document.getElementById('userInput').value = "";
+
+
+      setTimeout(function() {
+        var aiMessage = document.createElement('div');
+        aiMessage.classList.add('chat-message', 'ai');
+        aiMessage.innerHTML = '<strong>AI:</strong> That’s an interesting perspective! However, consider the scientific consensus on climate change and its global impact.';
+        chatBox.appendChild(aiMessage);
+
+    
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 1500); 
+    }
+  </script>
+</body>
+</html>
