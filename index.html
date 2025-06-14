@@ -1,133 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Think and Ink - Home</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #0A1828;
-      color: #BFA181;
+      background-color: #ffffff;
+      color: #4B0082;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     nav {
       display: flex;
       justify-content: flex-end;
+      width: 100%;
       padding: 20px;
-      background-color: #178582;
+      background-color: #800080;
+      box-sizing: border-box;
+      flex-wrap: wrap;
     }
+
     nav a {
-      color: #BFA181;
+      color: #ffffff;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 10px 15px;
       font-size: 18px;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .heading-container {
       text-align: center;
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      padding: 80px 20px 30px;
+      box-sizing: border-box;
     }
+
     .heading-container h1 {
-      font-size: 48px;
+      font-size: 3rem;
       margin: 0;
-      color: #BFA181;
+      color: #4B0082;
     }
+
     .heading-container p {
-      font-size: 24px;
+      font-size: 1.5rem;
       margin: 10px 0;
-      color: #178582;
+      color: #800080;
       font-style: italic;
     }
+
+    @keyframes flickerEffect {
+      0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 10px #fff, 0 0 20px #800080, 0 0 30px #800080, 0 0 40px #800080;
+      }
+      50% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px #fff, 0 0 10px #4B0082, 0 0 15px #4B0082;
+      }
+    }
+
     .try-and-ink-btn {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #29dad4;
-      color: #0A1828;
+      background-color: #800080;
+      color: #ffffff;
       border: none;
-      font-size: 24px;
+      font-size: 1.2rem;
       padding: 15px 30px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      animation: pop 1.5s infinite;
+      margin-top: 30px;
+      animation: flickerEffect 1.5s infinite;
     }
+
     .try-and-ink-btn:hover {
-      background-color: #BFA181;
-      color: #0A1828;
-    }
-    @keyframes pop {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.1);
-      }
+      background-color: #4B0082;
     }
 
-    /* Styles for the first image */
     .image-container {
-      text-align: right; /* Align image to the right */
-      margin-top: 20px;
-      padding-right: 5px; /* Adjust the right padding for spacing */
-    }
-    .image-container img {
-      width: 30%;  /* Set the width to 50% of the container (moderate size) */
-      max-width: 400px;  /* Limit the max width to 400px */
-      border-radius: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    /* Styles for the second image at bottom left */
-    .bottom-centre-image {
-      position: absolute;
-      bottom: 10px;  /* 20px from the bottom of the page */
-      left: 40%;  /* 20px from the left side */
-      width: 20%;  /* Set the width to 20% of the container */
-      max-width: 300px;  /* Limit the max width */
-      border-radius: 15px;
-    }
-    .top-left-image {
-      position: absolute;
-      top: 80px;  /* 20px from the top */
-      left: 20px;  /* 20px from the left */
-      width: 20%;  /* 20% of the container's width */
+    .image-container img {
+      width: 100%;
       max-width: 300px;
+      height: auto;
       border-radius: 15px;
+      box-shadow: 0 0 10px rgba(75, 0, 130, 0.2);
+    }
+
+    .why-section {
+      max-width: 900px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .why-section h2 {
+      color: #4B0082;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .why-section p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .why-section ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1rem;
+    }
+
+    .why-section ul li {
+      margin-bottom: 10px;
+      color: #4B0082;
+    }
+
+    .quote-bar {
+      background-color: #800080;
+      color: white;
+      text-align: center;
+      font-style: italic;
+      padding: 20px;
+      font-size: 1.1rem;
+      margin-top: 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+      .heading-container h1 {
+        font-size: 2.2rem;
+      }
+
+      .heading-container p {
+        font-size: 1.2rem;
+      }
+
+      .try-and-ink-btn {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+
+      .why-section h2 {
+        font-size: 1.6rem;
+      }
+
+      .quote-bar {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="index.html">Home</a>
-    <a href="aboutus.html">About Us</a>
-    <a href="feedback.html">Feedback</a>
+    <a href="/">Home</a>
+    <a href="about_us">About Us</a>
+    <a href="feedback_">Feedback</a>
   </nav>
 
   <div class="heading-container">
     <h1>Think and Ink</h1>
     <p>Create, Write, and Learn</p>
+    <button class="try-and-ink-btn" onclick="window.location.href='{{ url_for('writing_styles') }}'">Try and Ink</button>
   </div>
 
-  <button class="try-and-ink-btn" onclick="window.location.href='redirect.html'">Try and Ink</button>
-
-  <!-- Image Section (Right-Aligned Image) -->
   <div class="image-container">
-    <img src="D:\think and ink\images\img1.webp" alt="Main Image">
+    <img src="{{ url_for('static', filename='home/img1.webp') }}" alt="Main Image">
+    <img src="{{ url_for('static', filename='home/img2.webp') }}" alt="Bottom Centre Image">
+    <img src="{{ url_for('static', filename='home/img3.webp') }}" alt="Top Left Image">
   </div>
 
-  <!-- Bottom Left Image -->
-  <img src="D:\think and ink\images\img2.webp" class="bottom-centre-image" alt="Bottom Left Image">
-  <img src="D:\think and ink\images\img3.webp" class="top-left-image" alt="Top Left Image">
+  <section class="why-section">
+    <h2>Why Choose Think and Ink?</h2>
+    <p>At Think and Ink, we empower your voice through writing. Whether you're crafting a story, sharing an opinion, or debating with AI, our tools help enhance creativity, communication, and confidence.</p>
+    <ul>
+      <li>AI-guided writing practice</li>
+      <li>Multiple writing formats: story, blog, debate</li>
+      <li>Personal growth through expression</li>
+    </ul>
+  </section>
 
-  
-
+  <section class="quote-bar">
+    <p>"Writing is the painting of the voice." - Voltaire</p>
+  </section>
 
 </body>
 </html>
